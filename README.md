@@ -1,6 +1,7 @@
 # Steam Achievement Tracker & In-Game Overlay (.NET 8)
 
-[![Release](https://img.shields.io/badge/release-v0.1.0-blue.svg)](https://github.com/)
+[![Release](https://img.shields.io/badge/release-v0.1.0-blue.svg)](https://github.com/ViValle/SteamAchievementTracker/releases)
+[![CI](https://github.com/ViValle/SteamAchievementTracker/actions/workflows/ci.yml/badge.svg)](https://github.com/ViValle/SteamAchievementTracker/actions/workflows/ci.yml)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Tests](https://img.shields.io/badge/tests-25%20passed-brightgreen.svg)](tests/)
 [![SemVer](https://img.shields.io/badge/semver-2.0.0-orange.svg)](https://semver.org/)
