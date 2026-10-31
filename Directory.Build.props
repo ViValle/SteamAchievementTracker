@@ -1,0 +1,25 @@
+<Project>
+  <PropertyGroup>
+    <!-- Versioning (SemVer 2.0.0) -->
+    <Version>0.1.0</Version>
+    <AssemblyVersion>0.1.0.0</AssemblyVersion>
+    <FileVersion>0.1.0.0</FileVersion>
+    <InformationalVersion>0.1.0-alpha</InformationalVersion>
+
+    <!-- General Metadata -->
+    <Authors>Valle</Authors>
+    <Company>Valle Engineering</Company>
+    <Product>Steam Achievement Tracker</Product>
+    <Copyright>Copyright © 2026</Copyright>
+
+    <!-- Deterministic Builds & Supply Chain Security -->
+    <Deterministic>true</Deterministic>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    <ContinuousIntegrationBuild Condition="'$(GITHUB_ACTIONS)' == 'true'">true</ContinuousIntegrationBuild>
+
+    <!-- Code Quality & Defaults -->
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>12.0</LangVersion>
+  </PropertyGroup>
+</Project>

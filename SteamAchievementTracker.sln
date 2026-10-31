@@ -1,0 +1,64 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{3A79E0EB-7146-4F59-8DAF-B233AAEF8880}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SteamAchievementTracker.Core", "src\SteamAchievementTracker.Core\SteamAchievementTracker.Core.csproj", "{8A8D0190-0EE4-43D6-B723-91352B37C432}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SteamAchievementTracker.Infrastructure", "src\SteamAchievementTracker.Infrastructure\SteamAchievementTracker.Infrastructure.csproj", "{82731B35-B714-452B-A4F2-9DBD954DBFC9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SteamAchievementTracker.Injector", "src\SteamAchievementTracker.Injector\SteamAchievementTracker.Injector.csproj", "{6C84FFB8-167B-4459-9915-5BD028EDC38B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SteamAchievementTracker.Overlay", "src\SteamAchievementTracker.Overlay\SteamAchievementTracker.Overlay.csproj", "{B0F017AB-C0EB-4068-A40B-05864B191D23}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SteamAchievementTracker.UI", "src\SteamAchievementTracker.UI\SteamAchievementTracker.UI.csproj", "{DB2EE3CB-1924-48DF-8F3A-4AAADD2FE184}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{CE861E76-BE0F-4A79-A11F-148BA86239C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SteamAchievementTracker.Tests", "tests\SteamAchievementTracker.Tests\SteamAchievementTracker.Tests.csproj", "{D0F72822-104D-4045-8FEB-ECF18B992F4F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8A8D0190-0EE4-43D6-B723-91352B37C432}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A8D0190-0EE4-43D6-B723-91352B37C432}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A8D0190-0EE4-43D6-B723-91352B37C432}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A8D0190-0EE4-43D6-B723-91352B37C432}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82731B35-B714-452B-A4F2-9DBD954DBFC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82731B35-B714-452B-A4F2-9DBD954DBFC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82731B35-B714-452B-A4F2-9DBD954DBFC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82731B35-B714-452B-A4F2-9DBD954DBFC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C84FFB8-167B-4459-9915-5BD028EDC38B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C84FFB8-167B-4459-9915-5BD028EDC38B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C84FFB8-167B-4459-9915-5BD028EDC38B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C84FFB8-167B-4459-9915-5BD028EDC38B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0F017AB-C0EB-4068-A40B-05864B191D23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0F017AB-C0EB-4068-A40B-05864B191D23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0F017AB-C0EB-4068-A40B-05864B191D23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0F017AB-C0EB-4068-A40B-05864B191D23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB2EE3CB-1924-48DF-8F3A-4AAADD2FE184}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB2EE3CB-1924-48DF-8F3A-4AAADD2FE184}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB2EE3CB-1924-48DF-8F3A-4AAADD2FE184}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB2EE3CB-1924-48DF-8F3A-4AAADD2FE184}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0F72822-104D-4045-8FEB-ECF18B992F4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0F72822-104D-4045-8FEB-ECF18B992F4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0F72822-104D-4045-8FEB-ECF18B992F4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0F72822-104D-4045-8FEB-ECF18B992F4F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8A8D0190-0EE4-43D6-B723-91352B37C432} = {3A79E0EB-7146-4F59-8DAF-B233AAEF8880}
+		{82731B35-B714-452B-A4F2-9DBD954DBFC9} = {3A79E0EB-7146-4F59-8DAF-B233AAEF8880}
+		{6C84FFB8-167B-4459-9915-5BD028EDC38B} = {3A79E0EB-7146-4F59-8DAF-B233AAEF8880}
+		{B0F017AB-C0EB-4068-A40B-05864B191D23} = {3A79E0EB-7146-4F59-8DAF-B233AAEF8880}
+		{DB2EE3CB-1924-48DF-8F3A-4AAADD2FE184} = {3A79E0EB-7146-4F59-8DAF-B233AAEF8880}
+		{D0F72822-104D-4045-8FEB-ECF18B992F4F} = {CE861E76-BE0F-4A79-A11F-148BA86239C9}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\SteamAchievementTracker.Core\SteamAchievementTracker.Core.csproj" />
+    <ProjectReference Include="..\SteamAchievementTracker.Infrastructure\SteamAchievementTracker.Infrastructure.csproj" />
+    <ProjectReference Include="..\SteamAchievementTracker.Injector\SteamAchievementTracker.Injector.csproj" />
+    <ProjectReference Include="..\SteamAchievementTracker.Overlay\SteamAchievementTracker.Overlay.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>app_icon.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Resource Include="app_icon.ico" />
+    <Resource Include="app_icon.png" />
+    <None Update="app_icon.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="app_icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Sounds\**">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
