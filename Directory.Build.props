@@ -12,6 +12,9 @@
     <Product>Steam Achievement Tracker</Product>
     <Copyright>Copyright © 2026</Copyright>
 
+    <!-- Target Runtime Identifiers for Multi-Target Lockfiles -->
+    <RuntimeIdentifiers>win-x64</RuntimeIdentifiers>
+
     <!-- Deterministic Builds & Supply Chain Security -->
     <Deterministic>true</Deterministic>
     <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>

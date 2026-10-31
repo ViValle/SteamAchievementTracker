@@ -19,8 +19,8 @@ jobs:
         with:
           dotnet-version: '8.0.x'
 
-      - name: Restore Dependencies (Locked Mode)
-        run: dotnet restore --locked-mode
+      - name: Restore Dependencies
+        run: dotnet restore
 
       - name: Build Solution (Release)
         run: dotnet build --configuration Release --no-restore
