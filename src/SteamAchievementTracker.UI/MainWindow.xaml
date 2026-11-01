@@ -409,6 +409,7 @@
                                         <ColumnDefinition Width="Auto"/>
                                         <ColumnDefinition Width="Auto"/>
                                         <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
 
                                     <TextBlock Grid.Column="0" Text="Процесс игры: " VerticalAlignment="Center" FontWeight="SemiBold" Foreground="#E0E6F0" Margin="0,0,10,0"/>
@@ -430,6 +431,7 @@
                                     <Button Grid.Column="2" Content="🔄 Обновить" Command="{Binding RefreshProcessesCommand}" Margin="0,0,8,0"/>
                                     <Button Grid.Column="3" Content="🔍 Проверить безопасность" Command="{Binding EvaluateSafetyCommand}" Background="#1F352B" BorderBrush="#2ED573" Foreground="#2ED573" Margin="0,0,8,0"/>
                                     <Button Grid.Column="4" Content="🎯 Запустить отслеживание" Command="{Binding InjectHookCommand}" Background="#0066CC" BorderBrush="#0088FF" FontWeight="SemiBold"/>
+                                    <Button Grid.Column="5" Content="🖥️ Без рамок (Borderless)" Command="{Binding MakeBorderlessCommand}" Background="#1C2E4A" BorderBrush="#0088FF" Foreground="#00F0FF" Margin="8,0,0,0"/>
                                 </Grid>
                             </Border>
 

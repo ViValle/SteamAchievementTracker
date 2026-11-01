@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- Borderless Fullscreen helper (`WindowHelper`) to transform windowed games into true borderless fullscreen windows.
+- Dedicated UI button `[🖥️ Без рамок (Borderless)]` in the Process Tracker panel.
+- Automatic borderless mode enforcement when starting game tracking to guarantee overlay visibility with active DWM.
+
+### Fixed
+- Fixed overlay window top-most Z-ordering and positioning on high-DPI displays by using `SWP_NOMOVE`.
+- Fixed concurrency file sharing violation (`IOException`) in `LocalCacheManager.SaveGameAsync` via atomic temporary file writes and retries.
+
 ## [0.1.0] - 2026-11-01
 
 ### Added

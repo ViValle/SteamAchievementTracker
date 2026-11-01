@@ -15,6 +15,7 @@ using SteamAchievementTracker.Injector;
 using SteamAchievementTracker.Injector.Safety;
 using SteamAchievementTracker.Overlay.Hooks;
 using SteamAchievementTracker.Overlay.Wpf;
+using SteamAchievementTracker.UI.Helpers;
 
 namespace SteamAchievementTracker.UI.ViewModels;
 
@@ -137,6 +138,7 @@ public class MainViewModel : ViewModelBase
     public ICommand TestRankCommand { get; }
     public ICommand SyncGameCommand { get; }
     public ICommand TranslateGameCommand { get; }
+    public ICommand MakeBorderlessCommand { get; }
 
     public MainViewModel()
     {
@@ -176,6 +178,7 @@ public class MainViewModel : ViewModelBase
         TestRankCommand = new RelayCommand(p => TestRank(p?.ToString()));
         SyncGameCommand = new AsyncRelayCommand(SyncGameAsync);
         TranslateGameCommand = new AsyncRelayCommand(TranslateGameAsync);
+        MakeBorderlessCommand = new RelayCommand(MakeBorderless);
 
         // Начальная загрузка
         _ = InitializeAsync();
@@ -535,6 +538,18 @@ public class MainViewModel : ViewModelBase
         _localWatcherService.StartWatching(appId);
         IsInjected = true;
 
+        // Автоматически применяем режим без рамок для идеального отображения оверлея поверх игры
+        try
+        {
+            var hWnd = WindowHelper.FindMainWindow(SelectedProcess.Id);
+            if (hWnd != IntPtr.Zero)
+            {
+                WindowHelper.MakeBorderlessFullscreen(hWnd);
+                AddLog($"[DisplayManager] Режим без рамок (Borderless Fullscreen) автоматически активирован для окна игры.");
+            }
+        }
+        catch { }
+
         AddLog($"[Tracker] Отслеживание достижений в реальном времени УСПЕШНО АКТИВИРОВАНО!");
         AddLog($"[Tracker] Метод: Steam Client Realtime Engine (0% риск бана, 0% крашей, мгновенное появление оверлея и звука Xbox).");
         StatusMessage = $"Отслеживание активно: {SelectedProcess.Name}";
@@ -551,6 +566,42 @@ public class MainViewModel : ViewModelBase
         IsInjected = false;
         AddLog("[Tracker] Отслеживание игры успешно остановлено.");
         StatusMessage = "Отслеживание остановлено.";
+    }
+
+    private void MakeBorderless()
+    {
+        if (SelectedProcess == null)
+        {
+            MessageBox.Show("Выберите процесс игры из списка.", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
+            return;
+        }
+
+        try
+        {
+            var hWnd = WindowHelper.FindMainWindow(SelectedProcess.Id);
+            if (hWnd != IntPtr.Zero)
+            {
+                bool success = WindowHelper.MakeBorderlessFullscreen(hWnd);
+                if (success)
+                {
+                    AddLog($"[DisplayManager] Окно процесса '{SelectedProcess.Name}' успешно переведено в режим Без рамок (Borderless Fullscreen)!");
+                    AddLog("[DisplayManager] DWM активен. Оверлей достижений гарантированно отображается поверх игры!");
+                    StatusMessage = $"Без рамок: {SelectedProcess.Name}";
+                }
+                else
+                {
+                    AddLog($"[DisplayManager] Не удалось применить стиль без рамок к окну процесса '{SelectedProcess.Name}'.");
+                }
+            }
+            else
+            {
+                AddLog($"[DisplayManager] Главное окно процесса '{SelectedProcess.Name}' (PID {SelectedProcess.Id}) не обнаружено.");
+            }
+        }
+        catch (Exception ex)
+        {
+            AddLog($"[DisplayManager] Ошибка: {ex.Message}");
+        }
     }
 
     private void OnLocalAchievementUnlocked(LocalAchievementUnlock unlock)

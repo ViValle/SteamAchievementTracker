@@ -133,7 +133,7 @@ public partial class WpfOverlayWindow : Window
             var hwnd = new WindowInteropHelper(this).Handle;
             if (hwnd != IntPtr.Zero)
             {
-                SetWindowPos(hwnd, HWND_TOPMOST, (int)Left, (int)Top, 0, 0, SWP_NOSIZE | SWP_SHOWWINDOW | SWP_NOACTIVATE);
+                SetWindowPos(hwnd, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_SHOWWINDOW | SWP_NOACTIVATE);
             }
 
             // Сбрасываем предыдущие анимации перед новым показом

@@ -54,8 +54,23 @@ public class LocalCacheManager : ICacheManager
         try
         {
             var filePath = Path.Combine(_dataDirectory, $"{game.AppId}.json");
-            using var stream = File.Create(filePath);
-            await JsonSerializer.SerializeAsync(stream, game, JsonOptions);
+            var tempFilePath = Path.Combine(_dataDirectory, $"{game.AppId}.json.tmp");
+            for (int attempt = 0; attempt < 3; attempt++)
+            {
+                try
+                {
+                    using (var stream = new FileStream(tempFilePath, FileMode.Create, FileAccess.Write, FileShare.Read))
+                    {
+                        await JsonSerializer.SerializeAsync(stream, game, JsonOptions);
+                    }
+                    File.Move(tempFilePath, filePath, overwrite: true);
+                    break;
+                }
+                catch when (attempt < 2)
+                {
+                    await Task.Delay(50);
+                }
+            }
         }
         finally
         {
