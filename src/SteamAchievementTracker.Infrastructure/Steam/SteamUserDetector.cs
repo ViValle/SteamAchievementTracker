@@ -108,4 +108,14 @@ public static class SteamUserDetector
 
         return Path.Combine(steamPath, "appcache", "stats", $"UserGameStats_{steamId3.Value}_{appId}.bin");
     }
+
+    public static string? GetAchievementProgressPath()
+    {
+        var steamPath = GetSteamPath();
+        var steamId3 = DetectActiveSteamId3();
+        if (string.IsNullOrEmpty(steamPath) || !steamId3.HasValue)
+            return null;
+
+        return Path.Combine(steamPath, "userdata", steamId3.Value.ToString(), "config", "librarycache", "achievement_progress.json");
+    }
 }

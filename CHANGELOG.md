@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.1] - 2026-11-01
+
+### Added
+- Native binary VDF parser (`SteamStatsBinaryReader`) reading `UserGameStats_{steamId}_{appId}.bin` and `UserGameStatsSchema_{appId}.bin` directly from Steam's live client appcache.
+- Single-instance application mutex in `App.xaml.cs` to prevent conflicting background processes.
+- Automatic live game tracking when selecting or launching any cached game.
+
+### Fixed
+- Fixed in-game achievement detection failure: Steam does not update `librarycache/{appId}.json` while games are actively running; unlocks are now captured instantly from `UserGameStats_*.bin` and `achievement_progress.json`.
+- Automatically sync and update achievements on application launch.
+
 ## [0.2.0] - 2026-11-01
 
 ### Added

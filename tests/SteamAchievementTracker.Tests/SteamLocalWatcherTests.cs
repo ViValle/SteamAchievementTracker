@@ -43,4 +43,22 @@ public class SteamLocalWatcherTests
             Assert.False(string.IsNullOrEmpty(ach41.DisplayName));
         }
     }
+
+    [Fact]
+    public void SteamStatsBinaryReader_CanRead_UserGameStats_And_Schema()
+    {
+        var steamPath = SteamUserDetector.GetSteamPath();
+        var steamId3 = SteamUserDetector.DetectActiveSteamId3();
+        if (steamPath != null && steamId3.HasValue)
+        {
+            var statsPath = Path.Combine(steamPath, "appcache", "stats", $"UserGameStats_{steamId3.Value}_383150.bin");
+            if (File.Exists(statsPath))
+            {
+                var unlocks = SteamStatsBinaryReader.ReadLocalUnlockedAchievements(383150, steamId3.Value, steamPath);
+                Assert.True(unlocks.Count >= 24);
+                Assert.Contains(unlocks, u => u.ApiName.Equals("ACH_10", StringComparison.OrdinalIgnoreCase));
+                Assert.Contains(unlocks, u => u.ApiName.Equals("ACH_41", StringComparison.OrdinalIgnoreCase));
+            }
+        }
+    }
 }

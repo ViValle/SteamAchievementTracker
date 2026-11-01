@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using System.IO;
+using System.Threading;
 using System.Windows;
 using System.Windows.Threading;
 
@@ -10,11 +11,45 @@ namespace SteamAchievementTracker.UI;
 /// </summary>
 public partial class App : Application
 {
+    private static Mutex? _singleInstanceMutex;
+
     public App()
     {
         DispatcherUnhandledException += OnDispatcherUnhandledException;
         AppDomain.CurrentDomain.UnhandledException += OnDomainUnhandledException;
         TaskScheduler.UnobservedTaskException += OnUnobservedTaskException;
+    }
+
+    protected override void OnStartup(StartupEventArgs e)
+    {
+        const string appMutexName = "Global\\SteamAchievementTracker_SingleInstance_Mutex";
+        try
+        {
+            _singleInstanceMutex = new Mutex(true, appMutexName, out bool isNewInstance);
+            if (!isNewInstance)
+            {
+                MessageBox.Show("Steam Achievement Tracker уже запущен в системе!", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
+                Shutdown();
+                return;
+            }
+        }
+        catch
+        {
+            // Fallback если Global mutex недоступен без повышенных прав
+        }
+
+        base.OnStartup(e);
+    }
+
+    protected override void OnExit(ExitEventArgs e)
+    {
+        try
+        {
+            _singleInstanceMutex?.ReleaseMutex();
+            _singleInstanceMutex?.Dispose();
+        }
+        catch { }
+        base.OnExit(e);
     }
 
     private static void LogError(string prefix, Exception? ex)
